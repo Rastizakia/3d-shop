@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Only put the ABSOLUTE BEST 3 items here
+const featured = [
+  {
+    title: "Подарък за Св. Валентин",
+    price: "30 €",
+    image: "/images/Gift.jpg",
+    desc: "Подарък за Св. Валентин."
+  },
+  {
+    title: "Лампа",
+    price: "45 €",
+    image: "/images/Lithophane.jpg",
+    desc: "Персонализирана лампа със снимка (Литофана)."
+  },
+  {
+    title: "Механична лампа",
+    price: "35 €",
+    image: "/images/MechanicalLamp.jpg",
+    desc: "Здрава и стилна механична лампа."
+  }
+];
+---
+
+<Layout title="Начало">
+    
+    <!-- HERO SECTION -->
+    <div class="hero min-h-[60vh]" style="background-image: url(https://images.unsplash.com/photo-1631541909061-71e345d1b20e?q=80&w=1920&auto=format&fit=crop);">
+        <div class="hero-overlay bg-opacity-70"></div>
+        <div class="hero-content text-center text-neutral-content">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Уникални Подаръци</h1>
+                <p class="mb-5 text-lg">
+                    Ръчно изработени 3D принтове в Бургас.
+                    Направете специален подарък на любим човек или за себе си.
+                </p>
+                <a href="/gallery" class="btn btn-primary">Разгледай Галерията</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES SECTION -->
+    <div class="container mx-auto py-16 px-4">
+        <h2 class="text-3xl font-bold text-center mb-10">Най-Поръчвани Модели</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featured.map((item) => (
+                <div class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-transform duration-300">
+                    <figure class="h-64 w-full overflow-hidden"> 
+						<img src={item.image} alt={item.title} class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" /></figure>
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            {item.title}
+                            <div class="badge badge-secondary">{item.price}</div>
+                        </h2>
+                        <p>{item.desc}</p>
+                        <div class="card-actions justify-end">
+                            <a href={`https://m.me/YOUR_PAGE_ID?text=Здравейте, искам да поръчам ${item.title}`} target="_blank" class="btn btn-primary btn-sm">Поръчай</a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+        <div class="text-center mt-10">
+            <a href="/gallery" class="btn btn-outline btn-wide">Виж Всички Продукти</a>
+        </div>
+    </div>
+
+    <!-- INFO SECTION -->
+    <div class="bg-base-300 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Защо да изберете нас?</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-10">
+                <div class="max-w-xs mx-auto">
+                    <div class="text-4xl mb-2">🚀</div>
+                    <h3 class="font-bold text-xl">Бърза Изработка</h3>
+                    <p class="opacity-70">Поръчките се изпълняват в рамките на 2-3 дни.</p>
+                </div>
+                <div class="max-w-xs mx-auto">
+                    <div class="text-4xl mb-2">🎨</div>
+                    <h3 class="font-bold text-xl">Персонализация</h3>
+                    <p class="opacity-70">Можем да принтираме в различни цветове и размери по ваше желание.</p>
+                </div>
+                <div class="max-w-xs mx-auto">
+                    <div class="text-4xl mb-2">📍</div>
+                    <h3 class="font-bold text-xl">Локално от Бургас</h3>
+                    <p class="opacity-70">Подкрепете местния бизнес. Лично предаване за града.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</Layout>

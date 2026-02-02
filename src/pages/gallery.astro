@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// ALL PRODUCTS GO HERE
+const allProducts = [
+  {
+    title: "Нощна лампа динозавърско гнездо",
+    category: "Декорация",
+    price: "30 €",
+    image: "/images/NightLampDinosaur.jpg"
+  },
+  {
+    title: "Разтапяща се лампа'",
+    category: "Декорация",
+    price: "45 €",
+    image: "/images/MeltingLamp.jpg"
+  },
+  {
+    title: "Лампа робот",
+    category: "Декорация",
+    price: "30 €",
+    image: "/images/LampRobot.jpg"
+  },
+  {
+    title: "Монетник за левове",
+    category: "Декорация",
+    price: "30 €",
+    image: "/images/MoneyHolder.jpg"
+  },
+  {
+    title: "Органайзер за евро банкноти и монети",
+    category: "Аксесоари",
+    price: "30 €",
+    image: "/images/Organizer.jpg"
+  },
+  // Copy and paste a block above to add more items...
+];
+---
+
+<Layout title="Галерия">
+    <div class="container mx-auto px-4 py-10">
+        <h1 class="text-4xl font-bold text-center mb-2">Нашите Продукти</h1>
+        <p class="text-center opacity-70 mb-10">Разгледайте всичко, което сме изработили до момента.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {allProducts.map((item) => (
+                <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all">
+                    <figure class="h-64 w-full overflow-hidden">
+                         <img src={item.image} alt={item.title} class="w-full h-full object-cover" />
+                    </figure>
+                    <div class="card-body p-4">
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-lg font-bold">{item.title}</h2>
+                            <div class="badge badge-accent text-xs font-bold">{item.price}</div>
+                        </div>
+                        <p class="text-sm opacity-60 mb-2">{item.category}</p>
+                        <div class="card-actions justify-end">
+                            <a href={`https://m.me/YOUR_PAGE_ID?text=Здравейте, интересувам се от ${item.title}`} 
+                               target="_blank" 
+                               class="btn btn-primary btn-sm w-full">
+                               Поръчай
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>
