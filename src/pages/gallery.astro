@@ -6,13 +6,13 @@ const allProducts = [
   {
     title: "Нощна лампа динозавърско гнездо",
     category: "Декорация",
-    price: "30 €",
+    price: "20 €",
     image: "/3d-shop/images/NightLampDinosaur.jpg"
   },
   {
-    title: "Разтапяща се лампа'",
+    title: "Разтапяща се лампа",
     category: "Декорация",
-    price: "45 €",
+    price: "20 €",
     image: "/3d-shop/images/MeltingLamp.jpg"
   },
   {
@@ -24,26 +24,68 @@ const allProducts = [
   {
     title: "Монетник за левове",
     category: "Декорация",
-    price: "30 €",
+    price: "6 €",
     image: "/3d-shop/images/MoneyHolder.jpg"
   },
   {
     title: "Органайзер за евро банкноти и монети",
     category: "Аксесоари",
-    price: "30 €",
+    price: "8 €",
     image: "/3d-shop/images/Organizer.jpg"
   },
   {
     title: "Капибара моливник",
     category: "Аксесоари",
-    price: "30 €",
+    price: "4 €",
     image: "/3d-shop/images/CapybaraPencilHolder.jpg"
   },
   {
     title: "Артикулираща пеперуда",
     category: "Аксесоари",
-    price: "30 €",
+    price: "6 €",
     image: "/3d-shop/images/Butterfly.jpg"
+  },
+  {
+    title: "Оригамна коала",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/OrigamiKoala.jpg"
+  },
+  {
+    title: "Оригамен еднорог",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/OrigamiUnicorn.jpg"
+  },
+  {
+    title: "Оригамна лисица",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/OrigamiFox.jpg"
+  },
+  {
+    title: "Оригамна пеперуда",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/OrigamiButterfly.jpg"
+  },
+  {
+    title: "Оригамен слон",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/OrigamiElephant.jpg"
+  },
+  {
+    title: "Оригамно зайче",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/OrigamiBunny.jpg"
+  },
+    {
+    title: "Артикулираща акула скелет",
+    category: "Играчки",
+    price: "6 €",
+    image: "/3d-shop/images/ArticulatedBoneShark.jpg"
   },
 ];
 ---
@@ -57,16 +99,17 @@ const allProducts = [
             {allProducts.map((item) => (
                 <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all">
                     <figure class="h-64 w-full overflow-hidden">
-                         <img src={item.image} alt={item.title} class="w-full h-full object-cover" />
+                         {/* We give the image a specific class for our style block to target */}
+                         <img src={item.image} alt={item.title} class="gallery-card-image" />
                     </figure>
                     <div class="card-body p-4">
-                        <div class="flex justify-between items-start">
-                            <h2 class="card-title text-lg font-bold">{item.title}</h2>
-                            <div class="badge badge-accent text-xs font-bold">{item.price}</div>
+                        <div class="flex justify-between items-start gap-2 flex-nowrap">
+                            <h2 class="card-title text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis flex-shrink">{item.title}</h2>
+                            <div class="badge badge-accent text-xs font-bold flex-shrink-0">{item.price}</div>
                         </div>
                         <p class="text-sm opacity-60 mb-2">{item.category}</p>
                         <div class="card-actions justify-end">
-                            <a href={`https://m.me/YOUR_PAGE_ID?text=Здравейте, интересувам се от ${item.title}`} 
+                            <a href="https://www.facebook.com/groups/1164649835737765" 
                                target="_blank" 
                                class="btn btn-primary btn-sm w-full">
                                Поръчай
@@ -78,3 +121,13 @@ const allProducts = [
         </div>
     </div>
 </Layout>
+
+<!-- This style block will force the images to cover their containers -->
+<style is:global>
+    .gallery-card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover !important; /* Forces the image to cover the space */
+        object-position: center !important; /* Ensures the image is centered */
+    }
+</style>
